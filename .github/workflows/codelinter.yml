@@ -12,6 +12,5 @@ jobs:
 
       - name: Run Super-Code
         uses: github/super-linter@v3
-        env: 
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
