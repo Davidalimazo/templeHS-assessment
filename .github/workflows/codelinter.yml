@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Code-Linter
 
 on: push
 
@@ -8,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Run Super-Code
-        uses: github/super-linter@v3
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: install NPM Packages
+        run: yarn install
+     
+      - name: Build Project
+        run: yarn build
