@@ -1,12 +1,10 @@
-name: Build App
+name: Code-Linter
 
-on: 
-  push:
-    branches: [main, dev]
+on: push
 
 jobs:
   code-linter:
-    name: Build App
+    name: Lint code base
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
@@ -17,7 +15,7 @@ jobs:
 
       - name: Set up node
         with:
-          node-version: 18
+          node-version: '18.x'
 
       - name: install NPM Packages
         run: yarn install
