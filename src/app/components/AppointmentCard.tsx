@@ -36,7 +36,7 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time }) => {
     // setData([]);
     setLoading(false);
     return () => console.log("clean up");
-  }, []);
+  }, [doctorId]);
 
   const isToday = (dateStr: string) => {
     let momentDate = moment(dateStr).format("LLLL").split(",");

@@ -14,14 +14,14 @@ const Details: FC<Props> = ({ params, searchParams }) => {
   return (
     <div className="">
       <PageContainer
-        children={
+        main={
           <AppointmentCard
             time={searchParams.time}
             date={searchParams.date}
             doctorId={params.doctorId}
           />
         }
-        sidebar={<Sidebar children={"Confirm your appointment details"} />}
+        sidebar={<Sidebar component={"Confirm your appointment details"} />}
       />
     </div>
   );

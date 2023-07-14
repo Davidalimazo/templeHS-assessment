@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="">
       <PageContainer
-        children={<DoctorsList />}
+        main={<DoctorsList />}
         sidebar={
           <Sidebar
             isHome
