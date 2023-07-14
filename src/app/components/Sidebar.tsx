@@ -5,11 +5,11 @@ import { PiCaretLeft } from "react-icons/pi";
 import { useRouter } from "next/navigation";
 
 interface LandingPageProps {
-  children: React.ReactNode;
+  component: string;
   isHome?: boolean;
 }
 
-const Sidebar: FC<LandingPageProps> = ({ children, isHome }) => {
+const Sidebar: FC<LandingPageProps> = ({ component, isHome }) => {
   const router = useRouter();
   return (
     <div>
@@ -21,7 +21,7 @@ const Sidebar: FC<LandingPageProps> = ({ children, isHome }) => {
           <PiCaretLeft fontSize="19px" /> <span>Go back</span>
         </div>
       ) : null}
-      <div className="font-bold text-2xl w-[300px]">{children}</div>
+      <div className="font-bold text-2xl w-[300px]">{component}</div>
     </div>
   );
 };

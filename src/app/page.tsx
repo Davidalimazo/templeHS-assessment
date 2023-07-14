@@ -8,10 +8,7 @@ export default function Home() {
       <PageContainer
         main={<DoctorsList />}
         sidebar={
-          <Sidebar
-            isHome
-            component={<span>Select your doctor and appointment time</span>}
-          />
+          <Sidebar isHome component="Select your doctor and appointment time" />
         }
       />
     </main>

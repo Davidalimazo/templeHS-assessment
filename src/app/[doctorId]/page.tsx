@@ -21,7 +21,7 @@ const Details: FC<Props> = ({ params, searchParams }) => {
             doctorId={params.doctorId}
           />
         }
-        sidebar={<Sidebar>Confirm your appointment details</Sidebar>}
+        sidebar={<Sidebar component="Confirm your appointment details" />}
       ></PageContainer>
     </div>
   );
