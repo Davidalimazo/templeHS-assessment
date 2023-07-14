@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect, useState } from 'react'
-import { Input, Select, Skeleton  } from '@mantine/core'
+import { Input, Select  } from '@mantine/core'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import useWindowWidth from '@/hook/useWindowWidth';
@@ -55,7 +55,7 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
     <div className="flex flex-row items-center gap-3">
         <div className="">
             <div className="font-semibold">Date</div>
-            <div className="border border-[#9E9E9E] rounded-sm p-2">
+            <div className="border border-[#9E9E9E] rounded-md p-2">
                 <DatePicker
                 selected={selectedDate}
                 onChange={handleDateChange}
@@ -66,7 +66,7 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
         </div>
         <div className="">
             <div className="font-semibold">Time</div>
-            <div className={`${timeplaceholder ? "" : "border border-[#9E9E9E]"} rounded-sm p-2 h-[41px] w-[200px] flex flex-row gap-2 items-center`} onClick={()=>settimeplaceholder(true)}>
+            <div className={`${timeplaceholder ? "" : "border border-[#9E9E9E]"} rounded-md p-2 h-[41px] w-[200px] flex flex-row gap-2 items-center`} onClick={()=>settimeplaceholder(true)}>
               {timeplaceholder ? 
               <>
               <Input type='time' w={200} size='md' value={startTime} onChange={onChangeTime}/> 

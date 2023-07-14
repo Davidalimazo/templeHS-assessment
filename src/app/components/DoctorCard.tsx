@@ -58,7 +58,7 @@ const DoctorCard: FC<DoctorType> = ({avatar, acceptVirtualVisitOnly, name, title
 
       const carouselRef = useRef();
 
-  return <div className={`mt-10 mr-[158px] ${width > 1280 ? "xl:w-[45%]" : ""} bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}>
+  return <div className={`mt-10 mr-[158px] ${width > 1280 ? "xl:w-[62.5%]" : ""} bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}>
   <div className=" relative">
     <div className={`absolute top-0 right-0 w-[180px] h-[30px] rounded-sm  ${acceptVirtualVisitOnly ? "bg-green-200 text-green-600 " : "bg-blue-200 text-blue-700"} font-semibold text-center`}>{acceptVirtualVisitOnly ? "Virtual Visit Only" : "In Person Visit only"}</div>  
   </div>
