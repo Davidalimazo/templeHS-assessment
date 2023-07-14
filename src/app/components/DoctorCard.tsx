@@ -93,7 +93,12 @@ const DoctorCard: FC<DoctorType> = ({
       <div className="p-5">
         <div className="mt-2 ml-2">
           <div className="flex flex-row items-center gap-2">
-            <Avatar size={"lg"} color="blue" radius={"lg"} src={avatar} />
+            <Avatar
+              size={"lg"}
+              color="blue"
+              radius={"lg"}
+              src={avatar}
+            ></Avatar>
             <div className="">
               <p className="text-md font-bold">{name}</p>
               <p className="text-sm font-semibold">{title}</p>

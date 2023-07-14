@@ -10,7 +10,7 @@ export default function Home() {
         sidebar={
           <Sidebar
             isHome
-            children={"Select your doctor and appointment time"}
+            component={<span>Select your doctor and appointment time</span>}
           />
         }
       />
