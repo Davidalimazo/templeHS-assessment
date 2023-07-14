@@ -10,6 +10,7 @@ import Loader from "./Loader";
 import { SlCalender } from "react-icons/sl";
 import { AiOutlineClockCircle, AiOutlineCreditCard } from "react-icons/ai";
 import { BsBell } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 interface Props {
   doctorId: number;
@@ -20,6 +21,11 @@ interface Props {
 const AppointmentCard: FC<Props> = ({ doctorId, date, time }) => {
   const [data, setData] = useState<DoctorType | null>(null);
   const [loading, setLoading] = useState(true);
+  const [check, setCheck] = useState(false);
+
+  const notify = () => {
+    toast.success("You have successfully booked an appointment");
+  };
 
   useEffect(() => {
     new Promise((resolve, _) => {
@@ -125,6 +131,8 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time }) => {
             <Checkbox
               size="sm"
               color="green"
+              checked={check}
+              onChange={(e) => setCheck(e.target.checked)}
               label={
                 <div>
                   <span className="text-[12px]">
@@ -137,7 +145,15 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time }) => {
           </div>
           <div className="flex flex-row items-center justify-between">
             <div className=""></div>
-            <button className="p-2 px-3 rounded-2xl bg-green-800 text-[11px] font-semibold text-gray-200">
+            <button
+              disabled={!check}
+              onClick={notify}
+              className={`p-2 px-3 rounded-2xl ${
+                check
+                  ? "bg-green-800 text-gray-100"
+                  : "bg-gray-300  text-gray-400"
+              }  text-[11px] font-semibold`}
+            >
               Schedule Appointment
             </button>
           </div>
