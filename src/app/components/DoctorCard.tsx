@@ -10,9 +10,10 @@ import { DoctorType } from '@/types/doctor';
 import moment from "moment";
 import { months } from '@/assets/data';
 import { convertTo12Hour } from '../utils/time_converter';
+import Link from 'next/link';
 
 
-const DoctorCard: FC<DoctorType> = ({avatar, acceptVirtualVisitOnly, name, title, initials, description, availability}) => {
+const DoctorCard: FC<DoctorType> = ({avatar, acceptVirtualVisitOnly, name, title, bio, availableSlots, id}) => {
     const width = useWindowWidth();
 
 
@@ -67,13 +68,13 @@ const DoctorCard: FC<DoctorType> = ({avatar, acceptVirtualVisitOnly, name, title
       <div className="flex flex-row items-center gap-2">
       <Avatar size={"lg"} color='blue' radius={"lg"} src={avatar}/>
           <div className="">
-              <p className="text-md font-bold">{name}, {initials}</p>
+              <p className="text-md font-bold">{name}</p>
               <p className="text-sm font-semibold">{title}</p>
           </div>
       </div>      
   </div>
   <div className="mt-5 text-[14px]">
-        {description}
+        {bio}
     </div>
     <div className="mt-5">
         <p className="font-semibold text-sm">Next Available Slots</p>
@@ -91,10 +92,12 @@ const DoctorCard: FC<DoctorType> = ({avatar, acceptVirtualVisitOnly, name, title
         onNextEnd={onEnd}
         pagination={false}>
             {
-              availability &&  availability.map(({date, time}, index)=>(
+              availableSlots &&  availableSlots.map(({date, time}, index)=>(
+                <Link href={{ pathname: `/${id}`, query: { date, time:convertTo12Hour(time) } }}>
                     <button className='flex flex-row gap-1 ring-1 ring-gray-300 rounded-full p-2' key={index}>
                     <span className=" text-md font-semibold">{isToday(date)},</span><span className="">{convertTo12Hour(time)}</span>
                 </button>
+                </Link>
                 ))
             }
         </Carousel>

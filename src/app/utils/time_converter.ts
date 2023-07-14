@@ -1,3 +1,6 @@
+import moment from "moment";
+
+
 export function convertTo12Hour(time:string) {
     // Extract hours and minutes from the time string
     const [hours, minutes] = time.split(':');
@@ -15,4 +18,10 @@ export function convertTo12Hour(time:string) {
     const convertedTime = `${hour}:${minutes +""+ period}`;
   
     return convertedTime;
+  }
+
+  export const dateFormater=(date:string)=>{
+    let format = moment(date).format('L').split("/")
+    const [month, day, year] = format;
+    return year+"/"+month+"/"+day;
   }

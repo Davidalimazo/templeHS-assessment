@@ -1,9 +1,9 @@
 export interface DoctorType{
+    id:number
     avatar:string
-    initials:string
     acceptVirtualVisitOnly:boolean
-    description:string
+    bio:string
     name:string
     title:string
-    availability:Array<{date:string, time:string}>
+    availableSlots:Array<{date:string, time:string}>
 }

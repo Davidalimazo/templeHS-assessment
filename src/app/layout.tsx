@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import RootStyleRegistry from './emotion';
 import ToasterProvider from '@/providers/ToasterProvider';
 import './globals.css';
+import Heading from './components/Heading';
 
 
 export const metadata: Metadata = {
@@ -84,7 +85,10 @@ export default function RootLayout({
     <html lang="en-US">
       <head />
       <body>
-        <RootStyleRegistry>{children}</RootStyleRegistry>
+        <RootStyleRegistry>
+        <Heading/>
+          {children}
+          </RootStyleRegistry>
         <ToasterProvider />
       </body>
     </html>

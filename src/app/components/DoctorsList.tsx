@@ -4,11 +4,13 @@ import { FC, useEffect, useState } from 'react'
 import { Input, Select  } from '@mantine/core'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import useWindowWidth from '@/hook/useWindowWidth';
 import DoctorCard from './DoctorCard';
 import { DoctorType } from '@/types/doctor';
 import Loader from './Loader';
 import { doctorsData } from '@/assets/data';
+import { useDebouncedState } from '@mantine/hooks';
+import moment from "moment";
+import { dateFormater } from '../utils/time_converter';
 
 
 
@@ -22,12 +24,11 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
     const [timeplaceholder, settimeplaceholder] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
      const [experience, setExperience] = useState<string | null>(null);
-     const [startTime, setStartTime] = useState<string>("13:34");
-     const width = useWindowWidth();
+     const [startTime, setStartTime] = useDebouncedState<string>("13:34", 200);
      const [data, setData] = useState<DoctorType[]>([]);
 
      useEffect(()=>{
-       new Promise((resolve, rejects)=>{
+       new Promise((resolve, _)=>{
             setTimeout(resolve, 5000)
         });
         setData(doctorsData);
@@ -39,15 +40,50 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
 
      const onChangeTime=(value:any)=>{
         setStartTime(value.target.value);
+
+        const filtered =(str:string)=>{
+            let data:DoctorType[]=[]
+             doctorsData.map(item=>{
+               item.availableSlots.map(e=>{
+                if(e.time == str){
+                  data.push(item)
+                }
+               })
+            });
+            return data;
+          }
+          if(filtered(value.target.value)){
+            setData(filtered(value.target.value))
+          }
+     }
+     const onChangeExperience=(value:any)=>{
+        setExperience(value);
+        if(value === "All"){
+            setData(doctorsData)
+        }else{
+            const filtered = doctorsData.filter(item=>item.title ===value);
+            setData(filtered)
+        }
      }
 
     const handleDateChange = (date:any) => {
         setSelectedDate(date);
-        const filteredData = data.filter(item => {
-            return item.availability.filter(i=>i.date === selectedDate);
-            
-          });
-        console.log(filteredData)
+
+        const filtered =(str:string)=>{
+            let data:DoctorType[]=[]
+            doctorsData.map(item=>{
+               item.availableSlots.map(e=>{
+                if(e.date == str){
+                  data.push(item)
+                }
+               })
+            });
+            return data;
+          }
+          if(filtered(dateFormater(date))){
+            setData(filtered(dateFormater(date)))
+          }
+         
       };
 
 
@@ -79,11 +115,11 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
                  <Select
                     size='md'
                     value={experience}
-                    onChange={setExperience}
+                    onChange={onChangeExperience}
                     placeholder="Select expertise"
                     data={[
+                        { value: 'All', label: 'All' },
                         { value: 'Medical Doctor', label: 'Medical Doctor' },
-                        { value: 'Dentist', label: 'Dentist' },
                         { value: 'Care Team Clinician Supervisor', label: 'Care Team Clinician Supervisor' },
                     ]}
                     />
@@ -93,8 +129,8 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
     {
         loading ? <Loader/> :<> {data.length === 0 ? <span className='mt-20 flex flex-row items-center justify-center text-md font-semibold'>No doctor availability data found, please try again later</span>:  <div className="flex flex-col gap-4">
             {
-                data.map((doctor, index)=>(
-                    <DoctorCard availability={doctor.availability} acceptVirtualVisitOnly={doctor.acceptVirtualVisitOnly} avatar={doctor.avatar} description={doctor.description} initials={doctor.initials} name={doctor.name} title={doctor.title} key={index}/>
+                data.map((doctor)=>(
+                    <DoctorCard availableSlots={doctor.availableSlots} acceptVirtualVisitOnly={doctor.acceptVirtualVisitOnly} avatar={doctor.avatar} bio={doctor.bio} name={doctor.name} title={doctor.title} key={doctor.id} id={doctor.id}/>
                 ))
             }
     </div> }</>

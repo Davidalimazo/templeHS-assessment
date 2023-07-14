@@ -1,13 +1,19 @@
-import Image from 'next/image'
-import Heading from './components/Heading'
-import PageContainer from './components/PageContainer'
-
+import DoctorsList from "./components/DoctorsList";
+import PageContainer from "./components/PageContainer";
+import Sidebar from "./components/Sidebar";
 
 export default function Home() {
   return (
     <main className="">
-      <Heading/>
-      <PageContainer/>
+      <PageContainer
+        children={<DoctorsList />}
+        sidebar={
+          <Sidebar
+            isHome
+            children={"Select your doctor and appointment time"}
+          />
+        }
+      />
     </main>
-  )
+  );
 }
