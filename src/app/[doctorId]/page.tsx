@@ -22,7 +22,7 @@ const Details: FC<Props> = ({ params, searchParams }) => {
           />
         }
         sidebar={<Sidebar>Confirm your appointment details</Sidebar>}
-      />
+      ></PageContainer>
     </div>
   );
 };
