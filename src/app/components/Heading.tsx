@@ -17,7 +17,7 @@ const Heading: FC<HeadingProps> = ({}) => {
             <GoBell size={18} />{" "}
             <Avatar size={"md"} color="blue" radius={"lg"} src={avatar.src} />
           </div>
-          <div className="">
+          <div className="hidden md:block">
             <p className="font-bold">Pelumi Alesh</p>
             <p className="text-sm text-gray-400 font-semibold">
               pelumi.al@gmail.com

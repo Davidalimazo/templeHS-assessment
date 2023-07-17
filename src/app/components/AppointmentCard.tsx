@@ -168,7 +168,9 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time, index }) => {
                       Date:
                     </span>{" "}
                   </div>
-                  <div className="text-sm text-gray-600">{isToday(date)}</div>
+                  <div className="text-sm text-gray-600 w-full">
+                    {isToday(date)}
+                  </div>
                 </div>
                 <div className="flex flex-row items-center">
                   <div className="w-[150px] flex flex-row items-center gap-2">
@@ -177,7 +179,9 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time, index }) => {
                       Duration:
                     </span>
                   </div>
-                  <div className="text-sm text-gray-600">30 Minutes</div>
+                  <div className="text-sm text-gray-600 flex flex-row items-start w-full">
+                    <span>30 Minutes</span>
+                  </div>
                 </div>
                 <div className="flex flex-row items-center">
                   <div className="w-[150px] flex flex-row items-center gap-2">
@@ -186,7 +190,7 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time, index }) => {
                       Reminders:
                     </span>
                   </div>
-                  <div className="flex flex-row items-center gap-3">
+                  <div className="flex flex-col md:flex-row items-start md:items-center md:gap-3 w-full">
                     <p className="text-sm text-gray-600">{email}</p>
                     <button
                       className="text-md text-green-500 font-bold cursor-pointer"

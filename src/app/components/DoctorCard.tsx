@@ -74,7 +74,7 @@ const DoctorCard: FC<DoctorType> = ({
   return (
     <div
       key={id}
-      className={`mt-10  md:mr-[158px] ${
+      className={`mt-10 ${
         width > 1280 ? "xl:w-[62.5%]" : ""
       } bg-white border border-gray-200 rounded-lg shadow-lg`}
     >
