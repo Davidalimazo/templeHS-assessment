@@ -15,7 +15,7 @@ const Sidebar: FC<LandingPageProps> = ({ component, isHome }) => {
     <div>
       {!isHome ? (
         <div
-          className="flex flex-row items-center gap-2 font-semibold mb-10"
+          className="flex flex-row items-center gap-2 font-semibold mb-10 cursor-pointer"
           onClick={() => router.back()}
         >
           <PiCaretLeft fontSize="19px" /> <span>Go back</span>

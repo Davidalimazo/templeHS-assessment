@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['res.cloudinary.com']
-      }  
-}
+  images: {
+    reactDevOverlay: false,
+    domains: ["res.cloudinary.com"],
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

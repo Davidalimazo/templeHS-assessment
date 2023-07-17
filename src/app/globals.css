@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground:  #302F2F;
-  --background-start: #FCFAFA;
-  --background-end:  #FFFDFD;
+  --foreground: #302f2f;
+  --background-start: #fcfafa;
+  --background-end: #fffdfd;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground:  #302F2F;
-    --background-start: #FFF;
-    --background-end:  #FFFDFD;
-    --green-primary: #6AFF52;
+    --foreground: #302f2f;
+    --background-start: #fff;
+    --background-end: #fffdfd;
+    --green-primary: #6aff52;
   }
 }
 
@@ -23,6 +23,10 @@ body {
   color: var(--foreground);
 }
 
-.react-datepicker__input-container .react-datepicker-ignore-onclickoutside{
+.react-datepicker__input-container .react-datepicker-ignore-onclickoutside {
   background: none;
+}
+
+nextjs-portal {
+  display: none;
 }

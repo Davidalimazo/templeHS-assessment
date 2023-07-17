@@ -11,9 +11,9 @@ import moment from "moment";
 import { months } from "@/assets/data";
 import { convertTo12Hour } from "../utils/time_converter";
 import Link from "next/link";
+import avatar from "@/assets/images/avatar.png";
 
 const DoctorCard: FC<DoctorType> = ({
-  avatar,
   acceptVirtualVisitOnly,
   name,
   title,
@@ -73,6 +73,7 @@ const DoctorCard: FC<DoctorType> = ({
 
   return (
     <div
+      key={id}
       className={`mt-10 mr-[158px] ${
         width > 1280 ? "xl:w-[62.5%]" : ""
       } bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
@@ -80,14 +81,12 @@ const DoctorCard: FC<DoctorType> = ({
       <div className=" relative">
         <div
           className={`absolute top-0 right-0 w-[180px] h-[30px] rounded-sm  ${
-            acceptVirtualVisitOnly
+            id % 2
               ? "bg-green-200 text-green-600 "
               : "bg-blue-200 text-blue-700"
           } font-semibold text-center`}
         >
-          {acceptVirtualVisitOnly
-            ? "Virtual Visit Only"
-            : "In Person Visit only"}
+          {id % 2 ? "Virtual Visit Only" : "In Person Visit only"}
         </div>
       </div>
       <div className="p-5">
@@ -97,7 +96,7 @@ const DoctorCard: FC<DoctorType> = ({
               size={"lg"}
               color="blue"
               radius={"lg"}
-              src={avatar}
+              src={avatar.src}
             ></Avatar>
             <div className="">
               <p className="text-md font-bold">{name}</p>
@@ -122,29 +121,35 @@ const DoctorCard: FC<DoctorType> = ({
               pagination={false}
             >
               {availableSlots &&
-                availableSlots.map(({ date, time }, index) => (
-                  <Link
-                    href={{
-                      pathname: `/${id}`,
-                      query: { date, time: convertTo12Hour(time) },
-                    }}
-                    key={date}
+                availableSlots.map(({ date, time, isBooked }, index) => (
+                  <button
+                    disabled={isBooked}
+                    className={`flex flex-row gap-1 ring-1 ${
+                      !isBooked ? "ring-gray-300" : "ring-red-500"
+                    } rounded-full p-2 cursor-pointer`}
+                    key={index}
                   >
-                    <button
-                      className="flex flex-row gap-1 ring-1 ring-gray-300 rounded-full p-2"
-                      key={index}
+                    {" "}
+                    <Link
+                      href={{
+                        pathname: !isBooked ? `/${id}` : null,
+                        query: !isBooked
+                          ? { date, time: convertTo12Hour(time), index }
+                          : null,
+                      }}
+                      key={date}
                     >
                       <span className=" text-md font-semibold">
                         {isToday(date)},
                       </span>
                       <span className="">{convertTo12Hour(time)}</span>
-                    </button>
-                  </Link>
+                    </Link>
+                  </button>
                 ))}
             </Carousel>
           </div>
         </div>
-        <p className="mt-5 font-semibold text-sm text-green-600">
+        <p className="mt-5 font-semibold text-sm text-green-600 cursor-pointer">
           Check full profile and availability
         </p>
       </div>

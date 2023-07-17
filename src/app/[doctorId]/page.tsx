@@ -7,7 +7,7 @@ import AppointmentCard from "../components/AppointmentCard";
 
 interface Props {
   params: { doctorId: number };
-  searchParams: { date: string; time: string };
+  searchParams: { date: string; time: string; index: number };
 }
 
 const Details: FC<Props> = ({ params, searchParams }) => {
@@ -16,6 +16,7 @@ const Details: FC<Props> = ({ params, searchParams }) => {
       <PageContainer
         main={
           <AppointmentCard
+            index={searchParams.index}
             time={searchParams.time}
             date={searchParams.date}
             doctorId={params.doctorId}
