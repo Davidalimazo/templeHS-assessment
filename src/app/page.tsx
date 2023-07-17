@@ -1,10 +1,11 @@
 import DoctorsList from "./components/DoctorsList";
+import Heading from "./components/Heading";
 import PageContainer from "./components/PageContainer";
 import Sidebar from "./components/Sidebar";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="w-screen">
       <PageContainer
         main={<DoctorsList />}
         sidebar={

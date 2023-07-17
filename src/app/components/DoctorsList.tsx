@@ -93,7 +93,7 @@ const DoctorsList: FC<DoctorsListProps> = ({}) => {
 
   return (
     <div className="">
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-col items-start md:flex-row md:items-center gap-3">
         <div className="">
           <div className="font-semibold">Date</div>
           <div className="border border-[#9E9E9E] rounded-md p-2">

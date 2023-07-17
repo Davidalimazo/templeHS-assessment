@@ -7,7 +7,7 @@ interface PageContainerProps {
 
 const PageContainer: FC<PageContainerProps> = ({ main, sidebar }) => {
   return (
-    <div className="py-5 px-10 flex flex-row gap-10 sm:gap-20">
+    <div className="py-5 px-10 pt:2 md:pt-10 flex flex-col lg:flex-row gap-10 sm:gap-20 w-full">
       {sidebar}
       {main}
     </div>

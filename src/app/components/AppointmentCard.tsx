@@ -141,11 +141,11 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time, index }) => {
           No doctor availability data found, please try again later
         </span>
       ) : (
-        <div className="space-y-4 w-2/4">
+        <div className="space-y-4 w-full">
           <div
-            className={`bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
+            className={`bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 sm:w-full md:w-2/4`}
           >
-            <div className="p-5">
+            <div className="p-3 md:p-5">
               <div className="mt-2 ml-2">
                 <div className="flex flex-row items-center gap-2">
                   <Avatar

@@ -57,7 +57,7 @@ const DoctorCard: FC<DoctorType> = ({
   };
 
   const breakPoints = [
-    { width: width < 600 ? 2 : 3, itemsToShow: width < 600 ? 2 : 3 },
+    { width: width < 500 ? 1 : 3, itemsToShow: width < 500 ? 1 : 3 },
   ];
 
   const onEnd = (next: any, currentIndex: any) => {
@@ -74,7 +74,7 @@ const DoctorCard: FC<DoctorType> = ({
   return (
     <div
       key={id}
-      className={`mt-10 mr-[158px] ${
+      className={`mt-10  md:mr-[158px] ${
         width > 1280 ? "xl:w-[62.5%]" : ""
       } bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
     >
