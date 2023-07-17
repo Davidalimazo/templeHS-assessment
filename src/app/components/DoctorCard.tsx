@@ -76,7 +76,7 @@ const DoctorCard: FC<DoctorType> = ({
       key={id}
       className={`mt-10  md:mr-[158px] ${
         width > 1280 ? "xl:w-[62.5%]" : ""
-      } bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`}
+      } bg-white border border-gray-200 rounded-lg shadow-lg`}
     >
       <div className=" relative">
         <div
