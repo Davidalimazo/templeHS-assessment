@@ -141,9 +141,9 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time, index }) => {
           No doctor availability data found, please try again later
         </span>
       ) : (
-        <div className="space-y-4 w-full">
+        <div className="space-y-4 w-full lg:w-3/4">
           <div
-            className={`bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 sm:w-full md:w-2/4`}
+            className={`bg-white border border-gray-200 rounded-lg shadow-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full lg:w-3/4`}
           >
             <div className="p-3 md:p-5">
               <div className="mt-2 ml-2">
@@ -236,7 +236,7 @@ const AppointmentCard: FC<Props> = ({ doctorId, date, time, index }) => {
               }
             />
           </div>
-          <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center justify-between w-full lg:w-3/4">
             <div className=""></div>
             <button
               disabled={!check}
